@@ -1,7 +1,7 @@
 # ToDo
 For known issues
 ----------
-Fix regex on the input handler or use alternate method
+None
 ----------
 
 Aspirational
@@ -13,12 +13,14 @@ Currently selected VM hardware list/view somewhere in UI
 
 Known Issues
 -----------
-Keyboard input handler isn't working as intended, for now just use alphanumeric characters "a-z A-Z 0-9",
-pressing any special characters will cause entry to stop accepting input. Regex Issue.
+None so far
 -----------
 
 Changelog
 -----------
+v1.14 April 21st 2023
+Fixed keyboard input handler, ditched regex, use python translate. Now ' ', '/' & '\' are replaced with '-'
+
 v1.13 April 21st 2023
 Fixed issue with config handler logic, it no longer nukes the entire file when deleting a VM
 

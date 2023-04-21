@@ -53,7 +53,7 @@ class Ui_CreateWindow(object):
         self.label_2 = QLabel(self.verticalLayoutWidget)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setEnabled(False)
-        self.verticalLayout.addWidget(self.label_2, 0, Qt.AlignHCenter)
+        self.verticalLayout.addWidget(self.label_2, 0, Qt.AlignLeft)
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.verticalLayout.addItem(self.verticalSpacer)
         self.horizontalLayout = QHBoxLayout()
@@ -87,7 +87,8 @@ class Ui_CreateWindow(object):
     def retranslateUi(self, createwindow):
         createwindow.setWindowTitle(QCoreApplication.translate("createwindow", u"Linbox for 86Box: Create", None))
         self.label.setText(QCoreApplication.translate("createwindow", u"Virtual Machine Name:", None))
-        self.label_2.setText(QCoreApplication.translate("createwindow", u"Special characters are not allowed!!", None))
+        self.label_2.setText(QCoreApplication.translate("createwindow", u"Slashes and whitespace are not allowed,\n"
+                                                                        u"they will be replaced by a '-' hyphen"))
         self.ok_btn.setText(QCoreApplication.translate("createwindow", u"&OK", None))
         self.cancel_btn.setText(QCoreApplication.translate("createwindow", u"&Cancel", None))
     # retranslateUi

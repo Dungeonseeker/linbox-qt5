@@ -167,12 +167,8 @@ class CreateWindow(QFrame):
         self.ui.ok_btn.clicked.connect(self.ok)
         self.ui.cancel_btn.clicked.connect(self.cancel)
 
-        # Input validator, only accept alphanumerical keys
         global name_entry
         name_entry = self.ui.name_entry
-        rx = QRegularExpression(r"^[A-Za-z0-9]+-_$")
-        validator = QRegularExpressionValidator(rx)
-        self.ui.name_entry.setValidator(validator)
 
     # Create window ok button
     def ok(self):
@@ -181,6 +177,10 @@ class CreateWindow(QFrame):
             pass
         else:
             self.vms: list = cfghndlr.config_list()
+
+            # Input handler, change illegal chars to -
+            self.vmname = self.vmname.translate(str.maketrans({' ': '-', '/': '-', '\"': '-'}))
+            print(self.vmname)
 
             # Check if vmname already exists
             if self.vmname in self.vms:
