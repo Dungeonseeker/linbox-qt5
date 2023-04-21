@@ -113,7 +113,7 @@ def config_list():
 # Delete a VM from Linbox.ini and remove its associated 86Box cfg
 def delete(vmname):
     # Load config parser
-    config = configparser.ConfigParser()
+    config = configparser.SafeConfigParser()
 
     # Generate the path of the VM CFG
     X: str = '{0}{1}{2}{3}{4}{5}'.format(XDGHome, '/', AppHome, '/', vmname, '.cfg')
@@ -135,16 +135,17 @@ def delete(vmname):
         print('An error ' + str(error) + 'occurred, bailing out.')
 
     # Read Linbox.ini
-    with open(Ini, 'r') as configfile:
-        config.read(configfile)
+    with open(Ini, 'r+') as configfile:
+        config.read_file(configfile)
 
-    # Remove section
-    config.remove_section(vmname)
+        # Remove section
+        config.remove_section(vmname)
+        configfile.seek(0)
 
-    # Write changes
-    with open(Ini, 'w') as configfile:
+        # Write changes
         config.write(configfile)
-    print('Config Delete:\n\nSection... ' + vmname.upper() + ' ...successfully removed from... ' + Ini.upper())
+        print('Config Delete:\n\nSection... ' + vmname.upper() + ' ...successfully removed from... ' + Ini.upper())
+        configfile.truncate()
 
 
 # Delete function bailout method
