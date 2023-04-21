@@ -1,180 +1,267 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>640</width>
-    <height>480</height>
-   </rect>
-  </property>
-  <property name="font">
-   <font>
-    <pointsize>10</pointsize>
-   </font>
-  </property>
-  <property name="contextMenuPolicy">
-   <enum>Qt::NoContextMenu</enum>
-  </property>
-  <property name="windowTitle">
-   <string>Linbox for 86Box</string>
-  </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>../resources/computer_white_36dp.svg</normaloff>../resources/computer_white_36dp.svg</iconset>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="font">
-    <font>
-     <family>DejaVu Sans</family>
-     <pointsize>10</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>621</width>
-      <height>421</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QPushButton" name="run_btn">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>&amp;Run</string>
-           </property>
-           <property name="icon">
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>640</width>
+                <height>480</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+                <pointsize>10</pointsize>
+            </font>
+        </property>
+        <property name="contextMenuPolicy">
+            <enum>Qt::NoContextMenu</enum>
+        </property>
+        <property name="windowTitle">
+            <string>Linbox for 86Box</string>
+        </property>
+        <property name="windowIcon">
             <iconset>
-             <normaloff>../resources/play_arrow_white_36dp.svg</normaloff>../resources/play_arrow_white_36dp.svg</iconset>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="settings_btn">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>&amp;Settings</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>../resources/settings_white_36dp.svg</normaloff>../resources/settings_white_36dp.svg</iconset>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="create_btn">
-           <property name="text">
-            <string>&amp;Create</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>../resources/create_white_36dp.svg</normaloff>../resources/create_white_36dp.svg</iconset>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="quit_btn">
-           <property name="text">
-            <string>&amp;Quit</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>../resources/close_white_36dp.svg</normaloff>../resources/close_white_36dp.svg</iconset>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item row="4" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QPushButton" name="delete_btn">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>&amp;Delete</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>../resources/delete_forever_white_36dp.svg</normaloff>../resources/delete_forever_white_36dp.svg</iconset>
-         </property>
+                <normaloff>../resources/computer_white_36dp.svg</normaloff>../resources/computer_white_36dp.svg
+            </iconset>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="font">
+                <font>
+                    <family>DejaVu Sans</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                </font>
+            </property>
+            <widget class="QWidget" name="gridLayoutWidget">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>0</y>
+                        <width>621</width>
+                        <height>421</height>
+                    </rect>
+                </property>
+                <layout class="QGridLayout" name="gridLayout">
+                    <item row="0" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout">
+                            <item>
+                                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                                    <item>
+                                        <widget class="QPushButton" name="run_btn">
+                                            <property name="enabled">
+                                                <bool>false</bool>
+                                            </property>
+                                            <property name="toolTip">
+                                                <string>Run selected Virtual Machine</string>
+                                            </property>
+                                            <property name="text">
+                                                <string>&amp;Run</string>
+                                            </property>
+                                            <property name="icon">
+                                                <iconset>
+                                                    <normalon>:/resources/play_arrow_white_36dp.svg</normalon>
+                                                </iconset>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QPushButton" name="settings_btn">
+                                            <property name="enabled">
+                                                <bool>false</bool>
+                                            </property>
+                                            <property name="toolTip">
+                                                <string>Run selected Virtual Machine settings</string>
+                                            </property>
+                                            <property name="text">
+                                                <string>&amp;Settings</string>
+                                            </property>
+                                            <property name="icon">
+                                                <iconset>
+                                                    <normalon>:/resources/settings_white_36dp.svg</normalon>
+                                                </iconset>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QPushButton" name="create_btn">
+                                            <property name="toolTip">
+                                                <string>Create a new Virtual Machine</string>
+                                            </property>
+                                            <property name="text">
+                                                <string>&amp;Create</string>
+                                            </property>
+                                            <property name="icon">
+                                                <iconset>
+                                                    <normalon>:/resources/create_white_36dp.svg</normalon>
+                                                </iconset>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QPushButton" name="quit_btn">
+                                            <property name="toolTip">
+                                                <string>Close Linbox for 86Box</string>
+                                            </property>
+                                            <property name="text">
+                                                <string>&amp;Quit</string>
+                                            </property>
+                                            <property name="icon">
+                                                <iconset>
+                                                    <normalon>:/resources/close_white_36dp.svg</normalon>
+                                                </iconset>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                </layout>
+                            </item>
+                        </layout>
+                    </item>
+                    <item row="4" column="0">
+                        <layout class="QHBoxLayout" name="horizontalLayout_4">
+                            <item>
+                                <widget class="QPushButton" name="delete_btn">
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="toolTip">
+                                        <string>Delete selected Virtual Machine</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Delete</string>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset>
+                                            <normalon>:/resources/delete_forever_white_36dp.svg</normalon>
+                                        </iconset>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="open_btn">
+                                    <property name="toolTip">
+                                        <string>Open Linbox configuration folder</string>
+                                    </property>
+                                    <property name="text">
+                                        <string>&amp;Open configuration folder...</string>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset>
+                                            <normalon>:/resources/folder_open_white_36dp.svg</normalon>
+                                        </iconset>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item row="3" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_2">
+                            <item>
+                                <widget class="QListWidget" name="listWidget">
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                    <property name="styleSheet">
+                                        <string notr="true">color: rgb(255, 255, 255); selection-background-color:
+                                            rgb(76, 76, 76);
+                                        </string>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                </layout>
+            </widget>
         </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="open_btn">
-         <property name="text">
-          <string>&amp;Open configuration folder...</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>../resources/folder_open_white_36dp.svg</normaloff>../resources/folder_open_white_36dp.svg</iconset>
-         </property>
+        <widget class="QMenuBar" name="menubar">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>640</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <widget class="QMenu" name="menuFile">
+                <property name="title">
+                    <string>File</string>
+                </property>
+                <addaction name="action_Run"/>
+                <addaction name="action_Settings"/>
+                <addaction name="action_Create"/>
+                <addaction name="separator"/>
+                <addaction name="action_Quit"/>
+            </widget>
+            <widget class="QMenu" name="menuAbout">
+                <property name="title">
+                    <string>About</string>
+                </property>
+                <addaction name="actionAbout_Linbox"/>
+            </widget>
+            <addaction name="menuFile"/>
+            <addaction name="menuAbout"/>
         </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="3" column="0">
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QListWidget" name="listWidget">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255); selection-background-color: rgb(76, 76, 76);</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>640</width>
-     <height>30</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
- </widget>
- <tabstops>
-  <tabstop>run_btn</tabstop>
-  <tabstop>settings_btn</tabstop>
-  <tabstop>create_btn</tabstop>
-  <tabstop>quit_btn</tabstop>
-  <tabstop>listWidget</tabstop>
-  <tabstop>delete_btn</tabstop>
-  <tabstop>open_btn</tabstop>
- </tabstops>
- <resources/>
- <connections/>
+        <widget class="QStatusBar" name="statusbar"/>
+        <action name="action_Run">
+            <property name="icon">
+                <iconset>
+                    <normalon>:/resources/play_arrow_white_36dp.svg</normalon>
+                </iconset>
+            </property>
+            <property name="text">
+                <string>&amp;Run...</string>
+            </property>
+        </action>
+        <action name="action_Settings">
+            <property name="icon">
+                <iconset>
+                    <normalon>:/resources/settings_white_36dp.svg</normalon>
+                </iconset>
+            </property>
+            <property name="text">
+                <string>&amp;Settings...</string>
+            </property>
+        </action>
+        <action name="action_Create">
+            <property name="icon">
+                <iconset>
+                    <normalon>:/resources/create_white_36dp.svg</normalon>
+                </iconset>
+            </property>
+            <property name="text">
+                <string>&amp;Create...</string>
+            </property>
+        </action>
+        <action name="action_Quit">
+            <property name="text">
+                <string>&amp;Quit</string>
+            </property>
+        </action>
+        <action name="actionAbout_Linbox">
+            <property name="text">
+                <string>About Linbox</string>
+            </property>
+        </action>
+    </widget>
+    <tabstops>
+        <tabstop>run_btn</tabstop>
+        <tabstop>settings_btn</tabstop>
+        <tabstop>create_btn</tabstop>
+        <tabstop>quit_btn</tabstop>
+        <tabstop>listWidget</tabstop>
+        <tabstop>delete_btn</tabstop>
+        <tabstop>open_btn</tabstop>
+    </tabstops>
+    <resources>
+        <include location="../resources/linbox.qrc"/>
+    </resources>
+    <connections/>
 </ui>

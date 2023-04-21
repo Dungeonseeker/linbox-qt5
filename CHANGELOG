@@ -18,6 +18,13 @@ None so far
 
 Changelog
 -----------
+v1.15 April 21st 2023
+Changed to Qt Resource file instead of hardcoded relative path
+Added menu bar
+Added about page
+Added version number to main window title
+Cleaned up messy folder structure
+
 v1.14 April 21st 2023
 Fixed keyboard input handler, ditched regex, use python translate. Now ' ', '/' & '\' are replaced with '-'
 

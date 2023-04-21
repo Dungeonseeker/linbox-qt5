@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="resources">
+        <file>close_white_36dp.svg</file>
+        <file>computer_white_36dp.svg</file>
+        <file>create_white_36dp.svg</file>
+        <file>delete_forever_white_36dp.svg</file>
+        <file>folder_open_white_36dp.svg</file>
+        <file>ok_white_36dp.svg</file>
+        <file>play_arrow_white_36dp.svg</file>
+        <file>settings_white_36dp.svg</file>
+    </qresource>
+</RCC>

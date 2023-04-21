@@ -1,7 +1,7 @@
 # Imports
 import os
 
-import cfghndlr
+from handlers import cfghndlr
 
 # Constants
 AppName = '86Box'

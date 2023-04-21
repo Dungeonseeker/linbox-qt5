@@ -2,17 +2,14 @@
 import os
 import sys
 
-from PySide6.QtCore import QRegularExpression
-from PySide6.QtGui import QRegularExpressionValidator
 from PySide6.QtWidgets import QApplication, QMainWindow, QFrame, QMessageBox
 from showinfm import show_in_file_manager
 from xdgenvpy import XDG
 
-import cfghndlr
-import vmhndlr
+from handlers import cfghndlr, vmhndlr
 # Modules
-from ui_createwindow import Ui_CreateWindow
-from ui_mainwindow import Ui_MainWindow
+from ui.ui_createwindow import Ui_CreateWindow
+from ui.ui_mainwindow import Ui_MainWindow
 
 xdg = XDG()
 
@@ -53,6 +50,13 @@ class MainWindow(QMainWindow):
         # Define UI
         self.ui = Ui_MainWindow()
         self.ui.setupui(self)
+
+        # Actions
+        self.ui.action_Run.triggered.connect(self.run_vm)
+        self.ui.action_Settings.triggered.connect(self.run_settings)
+        self.ui.action_Create.triggered.connect(self.create_window)
+        self.ui.action_Quit.triggered.connect(self.quit_app)
+        self.ui.action_About_Linbox.triggered.connect(self.about)
 
         # Make listbox and buttons global for later
         global listbox, settings_btn, run_btn, delete_btn
@@ -156,6 +160,20 @@ class MainWindow(QMainWindow):
     @staticmethod
     def open():
         show_in_file_manager(Path)
+
+    def about(self):
+        about = QMessageBox()
+        about.setIcon(QMessageBox.Information)
+        about.setWindowTitle('About Linbox')
+        about.setFixedSize(350, 200)
+        about.setText('Linbox for 86Box:')
+        about.setInformativeText('(C)2023 Dungeonseeker\n\n'
+                                 'Linbox is licensed under the MIT license,\n'
+                                 'you are free to modify and distribute it.')
+        about.setStandardButtons(QMessageBox.Ok)
+        about.setDefaultButton(QMessageBox.Ok)
+        about.buttonClicked.connect(about.close)
+        about.exec()
 
 
 # Create new vm window class
