@@ -19,6 +19,9 @@ pressing any special characters will cause entry to stop accepting input. Regex 
 
 Changelog
 -----------
+v1.13 April 21st 2023
+Fixed issue with config handler logic, it no longer nukes the entire file when deleting a VM
+
 V1.12 April 21st 2023
 Final (hopefully) pass at UI overhaul
 Changed listWidget selection colour to something less bright
