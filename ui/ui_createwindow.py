@@ -14,7 +14,8 @@ from PySide6.QtGui import (QIcon)
 from PySide6.QtWidgets import (QHBoxLayout, QLabel,
                                QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
                                QVBoxLayout, QWidget)
-import linbox_rc
+
+import ui.linbox_rc
 
 
 class Ui_CreateWindow(object):

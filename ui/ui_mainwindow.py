@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (QGridLayout, QHBoxLayout, QListWidget,
                                QMenu, QMenuBar,
                                QPushButton, QSizePolicy, QStatusBar, QVBoxLayout,
                                QWidget)
-import linbox_rc
+import ui.linbox_rc
 
 # Version string
 version = 'v1.15'
