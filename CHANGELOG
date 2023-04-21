@@ -1,0 +1,38 @@
+# ToDo
+For known issues
+----------
+Fix regex on the input handler or use alternate method
+----------
+
+Aspirational
+-----------
+Settings manager
+Interactive status bar
+Currently selected VM hardware list/view somewhere in UI
+-----------
+
+Known Issues
+-----------
+Keyboard input handler isn't working as intended, for now just use alphanumeric characters "a-z A-Z 0-9",
+pressing any special characters will cause entry to stop accepting input. Regex Issue.
+-----------
+
+Changelog
+-----------
+V1.12 April 21st 2023
+Final (hopefully) pass at UI overhaul
+Changed listWidget selection colour to something less bright
+
+V1.11 April 20th 2023
+Minor tweaks to UI and added QOL stuff like tooltips and tab ordering
+Changed xdg implementation to xdgenvpy, xdg-base-dirs would randomly stop working
+Started creating packing/build files
+
+V1.1 April 20th 2023
+Total UI overhaul, remade the entire UI from scratch
+
+V1.01 April 19th 2023
+Fixed entering special characters in name entry box crash
+
+V1.0 - April 19th 2023
+Initial release
