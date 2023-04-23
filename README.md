@@ -6,7 +6,7 @@ Aims to be simple and easy to use, might increase its scope in the future.
 
 ![Screenshot 1.](./resources/ss.png)
 
-Currently only supports 86Box installed from a package manager, Flatpak/AppImage versions will not work.
+Supports 86Box installed from a package manager or Flatpak. AppImage versions will not work.
 
 ## Usage
 

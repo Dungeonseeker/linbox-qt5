@@ -19,31 +19,55 @@ run_btn = None
 settings_btn = None
 delete_btn = None
 name_entry = None
+package = None
+fp_system = None
+fp_user = None
+run_method = None
 
 # Application path constants
 VmCfg: str = '/Linbox.ini'
 AppHome: str = 'Linbox'
-XDGHome: str = xdg.XDG_DATA_HOME.__str__()
+XDGHome: str = xdg.XDG_CONFIG_HOME
 # Join 2 constants to create our path
 Path: str = os.path.join(XDGHome, AppHome)
 
 
 # Main window class
 class MainWindow(QMainWindow):
+
     def __init__(self, parent=None):
 
+        # Test to check in linbox folder exists but contains no ini file
+        if not os.path.exists(Path + VmCfg):
+            self.warning = QMessageBox()
+            self.warning.setIcon(QMessageBox.Warning)
+            self.warning.setWindowTitle('Delete existing folder?')
+            self.warning.setFixedSize(300, 200)
+            self.warning.setText('A Linbox folder already exists at:\n\n'
+                                 + Path + '\n\n'
+                                 'It will be removed and a new one created.')
+            self.warning.setStandardButtons(QMessageBox.Ok)
+            self.warning.setDefaultButton(QMessageBox.Ok)
+            self.warning.exec()
+            try:
+                # Delete existing folder
+                os.rmdir(Path)
+            except OSError as error:
+                self.warning = QMessageBox()
+                self.warning.setIcon(QMessageBox.Warning)
+                self.warning.setWindowTitle('An error occurred.?')
+                self.warning.setFixedSize(300, 200)
+                self.warning.setText('Unable to delete existing folder:\n\n'
+                                     + error.__str__() + '\n\n'
+                                     'Press OK to Quit..')
+                self.warning.setStandardButtons(QMessageBox.Ok)
+                self.warning.setDefaultButton(QMessageBox.Ok)
+                self.warning.buttonClicked.connect(quit)
+                self.warning.exec()
+
+        # Next test in linbox folder exists already
         if not os.path.exists(Path):
-            frw = QMessageBox()
-            frw.setIcon(QMessageBox.Information)
-            frw.setWindowTitle('First run wizard...')
-            frw.setFixedSize(300, 200)
-            frw.setText('This is the first time you have run Linbox,\n'
-                        'a config file will be created at:')
-            frw.setInformativeText(Path)
-            frw.setStandardButtons(QMessageBox.Ok)
-            frw.setDefaultButton(QMessageBox.Ok)
-            frw.buttonClicked.connect(frw.close)
-            frw.exec()
+            self.frw()
 
         super().__init__(parent)
 
@@ -58,12 +82,25 @@ class MainWindow(QMainWindow):
         self.ui.action_Quit.triggered.connect(self.quit_app)
         self.ui.action_About_Linbox.triggered.connect(self.about)
 
-        # Make listbox and buttons global for later
-        global listbox, settings_btn, run_btn, delete_btn
+        # Make objects global for later
+        global listbox, settings_btn, run_btn, delete_btn, combobox
         listbox = self.ui.listWidget
         run_btn = self.ui.run_btn
         settings_btn = self.ui.settings_btn
         delete_btn = self.ui.delete_btn
+        combobox = self.ui.select_cmb
+
+        # Populate combobox and set 86Box paths
+        global package, fp_system, fp_user
+        if os.path.exists('/usr/bin/86Box'):
+            self.ui.select_cmb.addItem('Package')
+            package = '/usr/bin/86Box'
+        if os.path.exists('/var/lib/flatpak/exports/bin/net._86box._86Box'):
+            self.ui.select_cmb.addItem('Flatpak (System)')
+            fp_system = '/var/lib/flatpak/exports/bin/net._86box._86Box'
+        if os.path.exists(xdg.XDG_DATA_HOME + '/flatpak/exports/bin/net._86box._86Box'):
+            self.ui.select_cmb.addItem('Flatpak (User)')
+            fp_user = xdg.XDG_DATA_HOME + '/flatpak/exports/bin/net._86box._86Box'
 
         # Define other windows
         self.create = None
@@ -95,6 +132,19 @@ class MainWindow(QMainWindow):
         self.ui.delete_btn.clicked.connect(self.delete)
         self.ui.open_btn.clicked.connect(self.open)
 
+    def frw(self):
+        frw = QMessageBox()
+        frw.setIcon(QMessageBox.Information)
+        frw.setWindowTitle('First run wizard...')
+        frw.setFixedSize(300, 200)
+        frw.setText('This is the first time you have run Linbox,\n'
+                    'a config file will be created at:')
+        frw.setInformativeText(Path)
+        frw.setStandardButtons(QMessageBox.Ok)
+        frw.setDefaultButton(QMessageBox.Ok)
+        frw.buttonClicked.connect(frw.close)
+        frw.exec()
+
     # Create button
     def create_window(self):
         if self.create is None:
@@ -110,22 +160,41 @@ class MainWindow(QMainWindow):
 
     # Run button
     def run_vm(self):
+        global run_method
+        self.count = self.ui.select_cmb.currentIndex()
+        self.value = self.ui.select_cmb.itemText(self.count)
+        if self.value == 'Package':
+            run_method = package
+        elif self.value == 'Flatpak (System)':
+            run_method = fp_system
+        elif self.value == 'Flatpak (User)':
+            run_method = fp_user
         if self.ui.listWidget.isEnabled():
             self.vmname: str = self.ui.listWidget.currentItem().text()
-            vmhndlr.run_vm(self.vmname)
+            vmhndlr.run_vm(self.vmname, run_method)
         else:
             pass
 
     # Settings button
     def run_settings(self):
+        global run_method
+        self.count = self.ui.select_cmb.currentIndex()
+        self.value = self.ui.select_cmb.itemText(self.count)
+        if self.value == 'Package':
+            run_method = package
+        elif self.value == 'Flatpak (System)':
+            run_method = fp_system
+        elif self.value == 'Flatpak (User)':
+            run_method = fp_user
         if self.ui.listWidget.isEnabled():
             self.vmname: str = self.ui.listWidget.currentItem().text()
-            vmhndlr.run_settings(self.vmname)
+            vmhndlr.run_settings(self.vmname, run_method)
         else:
             pass
 
     # Delete button
     def delete(self):
+        # Warning about file removal
         warning = QMessageBox(self)
         warning.setIcon(QMessageBox.Warning)
         warning.setWindowTitle('Delete File?')
@@ -136,6 +205,7 @@ class MainWindow(QMainWindow):
         warning.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         warning.setDefaultButton(QMessageBox.No)
 
+        # Only delete if user clicks OK
         ret = warning.exec()
 
         if ret == QMessageBox.Yes:
@@ -162,6 +232,7 @@ class MainWindow(QMainWindow):
         show_in_file_manager(Path)
 
     def about(self):
+        # About window
         about = QMessageBox()
         about.setIcon(QMessageBox.Information)
         about.setWindowTitle('About Linbox')
@@ -213,7 +284,17 @@ class CreateWindow(QFrame):
                 self.warning.buttonClicked.connect(self.bailout)
                 self.warning.exec()
             else:
-                vmhndlr.create_vm(self.vmname)
+                # Set launch method based on combobox selection
+                global run_method, package, fp_system, fp_user
+                count = combobox.currentIndex()
+                self.value = combobox.itemText(count)
+                if self.value == 'Package':
+                    self.run_method = package
+                elif self.value == 'Flatpak (System)':
+                    self.run_method = fp_system
+                elif self.value == 'Flatpak (User)':
+                    self.run_method = fp_user
+                vmhndlr.create_vm(self.vmname, self.run_method)
                 self.check(self.vmname)
                 self.close()
         return

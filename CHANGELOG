@@ -18,6 +18,10 @@ None so far
 
 Changelog
 -----------
+v1.2 April 23rd 2023
+Flatpak support added
+Fixed failure condition if linbox folder exists but contains no ini file
+
 v1.15 April 21st 2023
 Changed to Qt Resource file instead of hardcoded relative path
 Added menu bar

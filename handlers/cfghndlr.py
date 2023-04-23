@@ -10,7 +10,7 @@ xdg = XDG()
 # Constants
 VmCfg: str = '/Linbox.ini'
 AppHome: str = 'Linbox'
-XDGHome: str = xdg.XDG_DATA_HOME.__str__()
+XDGHome: str = xdg.XDG_CONFIG_HOME.__str__()
 
 # Join 2 constants to create our paths
 Path: str = os.path.join(XDGHome, AppHome)
