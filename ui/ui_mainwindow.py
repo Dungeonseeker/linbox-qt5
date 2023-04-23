@@ -8,19 +8,15 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
-    QCursor, QFont, QFontDatabase, QGradient,
-    QIcon, QImage, QKeySequence, QLinearGradient,
-    QPainter, QPalette, QPixmap, QRadialGradient,
-    QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QHBoxLayout,
-    QListWidget, QListWidgetItem, QMainWindow, QMenu,
-    QMenuBar, QPushButton, QSizePolicy, QStatusBar,
-    QVBoxLayout, QWidget)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect,
+                            QSize, Qt)
+from PySide6.QtGui import (QAction, QFont, QIcon)
+from PySide6.QtWidgets import (QComboBox, QGridLayout, QHBoxLayout,
+                               QListWidget, QMenu,
+                               QMenuBar, QPushButton, QSizePolicy, QStatusBar,
+                               QVBoxLayout, QWidget)
 import ui.linbox_rc
+
 
 class Ui_MainWindow(object):
     def setupui(self, MainWindow):
@@ -48,8 +44,14 @@ class Ui_MainWindow(object):
         self.action_Create.setIcon(icon2)
         self.action_Quit = QAction(MainWindow)
         self.action_Quit.setObjectName(u"action_Quit")
+        icon6 = QIcon()
+        icon6.addFile(u":/resources/close_white_36dp.svg", QSize(), QIcon.Normal, QIcon.On)
+        self.action_Quit.setIcon(icon6)
         self.action_About_Linbox = QAction(MainWindow)
         self.action_About_Linbox.setObjectName(u"action_About_Linbox")
+        icon7 = QIcon()
+        icon7.addFile(u":/resources/info_white_36dp.svg", QSize(), QIcon.Normal, QIcon.On)
+        self.action_About_Linbox.setIcon(icon7)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
@@ -95,7 +97,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addWidget(self.quit_btn)
 
-
         self.gridLayout.addLayout(self.horizontalLayout_4, 4, 0, 1, 1)
 
         self.verticalLayout = QVBoxLayout()
@@ -127,9 +128,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addWidget(self.create_btn)
 
-
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-
 
         self.gridLayout.addLayout(self.verticalLayout, 1, 0, 1, 1)
 
@@ -139,11 +138,10 @@ class Ui_MainWindow(object):
         self.listWidget.setObjectName(u"listWidget")
         self.listWidget.setEnabled(False)
         self.listWidget.setStyleSheet(u"color: rgb(255, 255, 255); selection-background-color:\n"
-"                                            rgb(76, 76, 76);\n"
-"                                        ")
+                                      "                                            rgb(76, 76, 76);\n"
+                                      "                                        ")
 
         self.verticalLayout_2.addWidget(self.listWidget)
-
 
         self.gridLayout.addLayout(self.verticalLayout_2, 3, 0, 1, 1)
 
@@ -178,6 +176,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -187,34 +186,36 @@ class Ui_MainWindow(object):
         self.action_Create.setText(QCoreApplication.translate("MainWindow", u"&Create...", None))
         self.action_Quit.setText(QCoreApplication.translate("MainWindow", u"&Quit", None))
         self.action_About_Linbox.setText(QCoreApplication.translate("MainWindow", u"About Linbox", None))
-#if QT_CONFIG(tooltip)
+        # if QT_CONFIG(tooltip)
         self.delete_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Delete selected Virtual Machine", None))
-#endif // QT_CONFIG(tooltip)
+        # endif // QT_CONFIG(tooltip)
         self.delete_btn.setText(QCoreApplication.translate("MainWindow", u"&Delete", None))
-#if QT_CONFIG(tooltip)
+        # if QT_CONFIG(tooltip)
         self.open_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Open Linbox configuration folder", None))
-#endif // QT_CONFIG(tooltip)
+        # endif // QT_CONFIG(tooltip)
         self.open_btn.setText(QCoreApplication.translate("MainWindow", u"&Open configuration folder...", None))
-#if QT_CONFIG(tooltip)
+        # if QT_CONFIG(tooltip)
         self.quit_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Close Linbox for 86Box", None))
-#endif // QT_CONFIG(tooltip)
+        # endif // QT_CONFIG(tooltip)
         self.quit_btn.setText(QCoreApplication.translate("MainWindow", u"&Quit", None))
-#if QT_CONFIG(tooltip)
-        self.select_cmb.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Method to run the selected Virtual Machine with</p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
+        # if QT_CONFIG(tooltip)
+        self.select_cmb.setToolTip(QCoreApplication.translate("MainWindow",
+                                                              u"<html><head/><body><p>Method to run the selected Virtual Machine with</p></body></html>",
+                                                              None))
+        # endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(tooltip)
         self.run_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Run selected Virtual Machine", None))
-#endif // QT_CONFIG(tooltip)
+        # endif // QT_CONFIG(tooltip)
         self.run_btn.setText(QCoreApplication.translate("MainWindow", u"&Run", None))
-#if QT_CONFIG(tooltip)
-        self.settings_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Run selected Virtual Machine settings", None))
-#endif // QT_CONFIG(tooltip)
+        # if QT_CONFIG(tooltip)
+        self.settings_btn.setToolTip(
+            QCoreApplication.translate("MainWindow", u"Run selected Virtual Machine settings", None))
+        # endif // QT_CONFIG(tooltip)
         self.settings_btn.setText(QCoreApplication.translate("MainWindow", u"&Settings", None))
-#if QT_CONFIG(tooltip)
+        # if QT_CONFIG(tooltip)
         self.create_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Create a new Virtual Machine", None))
-#endif // QT_CONFIG(tooltip)
+        # endif // QT_CONFIG(tooltip)
         self.create_btn.setText(QCoreApplication.translate("MainWindow", u"&Create", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuAbout.setTitle(QCoreApplication.translate("MainWindow", u"About", None))
     # retranslateUi
-

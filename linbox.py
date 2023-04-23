@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
             self.warning.setFixedSize(300, 200)
             self.warning.setText('A Linbox folder already exists at:\n\n'
                                  + Path + '\n\n'
-                                 'It will be removed and a new one created.')
+                                          'It will be removed and a new one created.')
             self.warning.setStandardButtons(QMessageBox.Ok)
             self.warning.setDefaultButton(QMessageBox.Ok)
             self.warning.exec()
@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):
                 self.warning.setFixedSize(300, 200)
                 self.warning.setText('Unable to delete existing folder:\n\n'
                                      + error.__str__() + '\n\n'
-                                     'Press OK to Quit..')
+                                                         'Press OK to Quit..')
                 self.warning.setStandardButtons(QMessageBox.Ok)
                 self.warning.setDefaultButton(QMessageBox.Ok)
                 self.warning.buttonClicked.connect(quit)

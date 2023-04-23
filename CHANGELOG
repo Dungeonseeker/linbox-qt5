@@ -18,6 +18,9 @@ None so far
 
 Changelog
 -----------
+v1.2.1 April 23rd 2023
+Hotfix for some missing icons in menu
+
 v1.2 April 23rd 2023
 Flatpak support added
 Fixed failure condition if linbox folder exists but contains no ini file

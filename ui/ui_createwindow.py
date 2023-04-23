@@ -14,7 +14,6 @@ from PySide6.QtGui import (QIcon)
 from PySide6.QtWidgets import (QHBoxLayout, QLabel,
                                QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
                                QVBoxLayout, QWidget)
-
 import ui.linbox_rc
 
 
