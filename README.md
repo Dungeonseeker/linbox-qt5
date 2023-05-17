@@ -6,7 +6,8 @@ Aims to be simple and easy to use, might increase its scope in the future.
 
 ![Screenshot 1.](./resources/ss.png)
 
-Supports 86Box installed from a package manager or Flatpak. AppImage versions will work if under ~/Portable.
+Supports 86Box installed from a package manager or Flatpak. 
+AppImage versions will work if under ~/Portable.
 
 ## Usage
 
@@ -21,7 +22,9 @@ $ python linbox.py
 
 ## Ubuntu
 
+```
 sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev
+```
 
 ## Know issues, ToDos & Misc
 
