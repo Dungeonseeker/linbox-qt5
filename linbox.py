@@ -7,6 +7,8 @@ from showinfm import show_in_file_manager
 from xdgenvpy import XDG
 
 from handlers import cfghndlr, vmhndlr
+from utils import system as sys_tool
+
 # Modules
 from ui.ui_createwindow import Ui_CreateWindow
 from ui.ui_mainwindow import Ui_MainWindow
@@ -22,6 +24,7 @@ name_entry = None
 package = None
 fp_system = None
 fp_user = None
+fp_appimg = None
 run_method = None
 
 # Application path constants
@@ -91,7 +94,7 @@ class MainWindow(QMainWindow):
         combobox = self.ui.select_cmb
 
         # Populate combobox and set 86Box paths
-        global package, fp_system, fp_user
+        global package, fp_system, fp_user, fp_appimg
         if os.path.exists('/usr/bin/86Box'):
             self.ui.select_cmb.addItem('Package')
             package = '/usr/bin/86Box'
@@ -101,6 +104,10 @@ class MainWindow(QMainWindow):
         if os.path.exists(xdg.XDG_DATA_HOME + '/flatpak/exports/bin/net._86box._86Box'):
             self.ui.select_cmb.addItem('Flatpak (User)')
             fp_user = xdg.XDG_DATA_HOME + '/flatpak/exports/bin/net._86box._86Box'
+        app_img_path = sys_tool.find_portable_path()
+        if app_img_path is not None and os.path.exists(app_img_path):
+            self.ui.select_cmb.addItem('AppImage')
+            fp_appimg = app_img_path
 
         # Define other windows
         self.create = None
@@ -169,6 +176,8 @@ class MainWindow(QMainWindow):
             run_method = fp_system
         elif self.value == 'Flatpak (User)':
             run_method = fp_user
+        elif self.value == 'AppImage':
+            run_method = fp_appimg
         if self.ui.listWidget.isEnabled():
             self.vmname: str = self.ui.listWidget.currentItem().text()
             vmhndlr.run_vm(self.vmname, run_method)
@@ -186,6 +195,8 @@ class MainWindow(QMainWindow):
             run_method = fp_system
         elif self.value == 'Flatpak (User)':
             run_method = fp_user
+        elif self.value == 'AppImage':
+            run_method = fp_appimg
         if self.ui.listWidget.isEnabled():
             self.vmname: str = self.ui.listWidget.currentItem().text()
             vmhndlr.run_settings(self.vmname, run_method)
@@ -285,7 +296,7 @@ class CreateWindow(QFrame):
                 self.warning.exec()
             else:
                 # Set launch method based on combobox selection
-                global run_method, package, fp_system, fp_user
+                global run_method, package, fp_system, fp_user, fp_appimg
                 count = combobox.currentIndex()
                 self.value = combobox.itemText(count)
                 if self.value == 'Package':
@@ -294,6 +305,8 @@ class CreateWindow(QFrame):
                     self.run_method = fp_system
                 elif self.value == 'Flatpak (User)':
                     self.run_method = fp_user
+                elif self.value == 'AppImage':
+                    self.run_method = fp_appimg
                 vmhndlr.create_vm(self.vmname, self.run_method)
                 self.check(self.vmname)
                 self.close()
