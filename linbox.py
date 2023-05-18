@@ -40,27 +40,18 @@ class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
 
-        # Test to check in linbox folder exists but contains no ini file
-        if not os.path.exists(Path + VmCfg):
-            self.warning = QMessageBox()
-            self.warning.setIcon(QMessageBox.Warning)
-            self.warning.setWindowTitle('Delete existing folder?')
-            self.warning.setFixedSize(300, 200)
-            self.warning.setText('A Linbox folder already exists at:\n\n'
-                                 + Path + '\n\n'
-                                          'It will be removed and a new one created.')
-            self.warning.setStandardButtons(QMessageBox.Ok)
-            self.warning.setDefaultButton(QMessageBox.Ok)
-            self.warning.exec()
+        # Test to check if linbox folder does not exist yet
+        if not os.path.exists(Path):
             try:
-                # Delete existing folder
+                # Create new folder
+                os.mkdir(Path)
                 os.rmdir(Path)
             except OSError as error:
                 self.warning = QMessageBox()
                 self.warning.setIcon(QMessageBox.Warning)
                 self.warning.setWindowTitle('An error occurred.?')
                 self.warning.setFixedSize(300, 200)
-                self.warning.setText('Unable to delete existing folder:\n\n'
+                self.warning.setText('Unable to create config folder:\n\n'
                                      + error.__str__() + '\n\n'
                                                          'Press OK to Quit..')
                 self.warning.setStandardButtons(QMessageBox.Ok)
@@ -68,7 +59,7 @@ class MainWindow(QMainWindow):
                 self.warning.buttonClicked.connect(quit)
                 self.warning.exec()
 
-        # Next test in linbox folder exists already
+        # Next test if linbox folder exists already
         if not os.path.exists(Path):
             self.frw()
 
