@@ -1,1 +1,4 @@
 /backup_dir/
+.idea/
+venv/
+__pycache__/
