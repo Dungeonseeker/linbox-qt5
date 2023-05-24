@@ -180,7 +180,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Linbox for 86Box - v1.2.1", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Linbox for 86Box - v1.3", None))
         self.action_Run.setText(QCoreApplication.translate("MainWindow", u"&Run...", None))
         self.action_Settings.setText(QCoreApplication.translate("MainWindow", u"&Settings...", None))
         self.action_Create.setText(QCoreApplication.translate("MainWindow", u"&Create...", None))

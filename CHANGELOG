@@ -4,13 +4,6 @@ For known issues
 None
 ----------
 
-Aspirational
------------
-Settings manager
-Interactive status bar
-Currently selected VM hardware list/view somewhere in UI
------------
-
 Known Issues
 -----------
 None so far
@@ -18,6 +11,12 @@ None so far
 
 Changelog
 -----------
+v1.3 May 24th 2023
+Added AppImage support
+New shell script to setup venv properly
+Removed dangerous folder deletion attempt
+* Thanks to xafero for this update
+
 v1.2.1 May 10th 2023
 Hotfix for missing resource file
 

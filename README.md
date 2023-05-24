@@ -17,6 +17,7 @@ AppImage versions will work if under ~/Portable.
 git clone https://github.com/Dungeonseeker/linbox-qt5
 cd linbox-qt5
 $ pip install -r requirements.txt
+$ start.sh
 $ python linbox.py
 ```
 
